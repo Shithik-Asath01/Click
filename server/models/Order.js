@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema(
   {
-    userId: { type: String, required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     cartId: { type: String },
     cartItems: [
       {
-        productId: { type: String },
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
         title: { type: String },
         image: { type: String },
-        price: { type: Number }, // Changed to Number
+        price: { type: Number },
         quantity: { type: Number },
       },
     ],

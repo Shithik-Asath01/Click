@@ -31,13 +31,13 @@ function ShoppingCheckout() {
       : 0;
 
   const handlePlaceOrder = () => {
-   if (!cartItems?.items || cartItems.items.length === 0) {
-  toast({
-    title: "Your cart is empty. Please add items to proceed.",
-    variant: "destructive",
-  });
-  return;
-}
+    if (!cartItems?.items || cartItems.items.length === 0) {
+      toast({
+        title: "Your cart is empty. Please add items to proceed.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (currentSelectedAddress === null) {
       toast({
@@ -74,9 +74,11 @@ function ShoppingCheckout() {
       orderUpdateDate: new Date(),
     };
 
+    console.log("Placing order with data:", orderData);
     setIsPlacingOrder(true);
 
     dispatch(createNewOrder(orderData)).then((res) => {
+      console.log("Order response:", res);
       if (res?.payload?.success) {
         toast({
           title: "Order placed successfully!",
@@ -85,7 +87,7 @@ function ShoppingCheckout() {
         navigate("/shop/account");
       } else {
         toast({
-          title: "Failed to place order. Try again.",
+          title: res?.payload?.message || "Failed to place order. Try again.",
           variant: "destructive",
         });
       }
