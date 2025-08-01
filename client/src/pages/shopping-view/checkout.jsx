@@ -81,7 +81,8 @@ function ShoppingCheckout() {
         toast({
           title: "Order placed successfully!",
         });
-        navigate("/shop/account"); // or "/shop/orders" based on your routes
+        setCurrentSelectedAddress(null);
+        navigate("/shop/account");
       } else {
         toast({
           title: "Failed to place order. Try again.",

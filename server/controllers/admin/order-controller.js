@@ -3,8 +3,10 @@ const Order = require("../../models/Order");
 // Get all orders placed by all users (for admin)
 const getAllOrdersOfAllUsers = async (req, res) => {
   try {
+    console.log("Fetching all orders for admin");
     const orders = await Order.find().sort({ orderDate: -1 }); // latest first
 
+    console.log("Found orders:", orders.length);
     if (!orders.length) {
       return res.status(404).json({
         success: false,

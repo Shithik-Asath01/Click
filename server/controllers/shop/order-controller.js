@@ -22,6 +22,7 @@ const createOrder = async (req, res) => {
       payerId,
     } = req.body;
 
+    console.log("Creating order with data:", req.body);
     const newOrder = new Order({
       userId,
       cartId,
@@ -38,6 +39,7 @@ const createOrder = async (req, res) => {
     });
 
     await newOrder.save();
+    console.log("Order saved successfully:", newOrder._id);
 
     // Deduct stock
     for (let item of cartItems) {
@@ -51,6 +53,7 @@ const createOrder = async (req, res) => {
     // Delete cart after placing order
     if (cartId) {
       await Cart.findByIdAndDelete(cartId);
+      console.log("Cart deleted successfully");
     }
 
     res.status(201).json({
