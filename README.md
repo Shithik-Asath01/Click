@@ -39,7 +39,3 @@ Click2Cart is a full-featured e-commerce web application built with the **MERN S
 - **Settings**: Upload logo, set brand colors, change fonts, and add custom HTML blocks.
 
 ---
-
-
-├── README.md
-└── package.json
