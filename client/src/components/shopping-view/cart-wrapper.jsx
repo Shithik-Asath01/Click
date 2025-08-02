@@ -41,6 +41,7 @@ function UserCartWrapper({ cartItems, setOpenCartSheet }) {
           setOpenCartSheet(false);
         }}
         className="w-full mt-6"
+        disabled={!cartItems || cartItems.length === 0}
       >
         Checkout
       </Button>
