@@ -12,11 +12,13 @@ const initialState = {
 export const createNewOrder = createAsyncThunk(
   "/order/createNewOrder",
   async (orderData) => {
+    console.log("Sending order data:", orderData);
     const response = await axios.post(
       "http://localhost:5000/api/shop/order/create",
       orderData
     );
 
+    console.log("Order response:", response.data);
     return response.data;
   }
 );
